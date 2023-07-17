@@ -46,8 +46,6 @@ export const fetchData = () => {
       // console.log("Length of channels:", channelData.length);
       // console.log("TV Length:", tv.length);
 
-      const pattern = /S\d{1,2} E\d{1,2}/;
-
       for (let i = 0; i < channelData.length; i++) {
         const link = channelData[i].link.toLowerCase();
 
@@ -72,7 +70,18 @@ export const fetchData = () => {
           !link.includes(".avchd")
         ) {
           tv.push(channelData[i]);
-        } else if (pattern.test(channelData[i].title)) {
+        } else if (
+          channelData[i].title.includes("E0") ||
+          channelData[i].title.includes("E1") ||
+          channelData[i].title.includes("E2") ||
+          channelData[i].title.includes("E3") ||
+          channelData[i].title.includes("E4") ||
+          channelData[i].title.includes("E5") ||
+          channelData[i].title.includes("E6") ||
+          channelData[i].title.includes("E7") ||
+          channelData[i].title.includes("E8") ||
+          channelData[i].title.includes("E9")
+        ) {
           shows.push(channelData[i]);
         } else {
           movies.push(channelData[i]);
@@ -130,6 +139,9 @@ export const fetchData = () => {
 
       console.log("Shows Name: ", showsName.length);
       console.log("Shows Name: ", showsName[0]);
+
+      console.log("Data: ", channelData.length);
+      console.log("total: ", tv.length + movies.length + shows.length);
 
       return channelData;
     })
