@@ -46,18 +46,51 @@ export const fetchData = () => {
       // console.log("Length of channels:", channelData.length);
       // console.log("TV Length:", tv.length);
 
+      const pattern = /S\d{1,2} E\d{1,2}/;
+
       for (let i = 0; i < channelData.length; i++) {
+        const link = channelData[i].link.toLowerCase();
+
         if (
-          !channelData[i].link.includes(".mp4") &&
-          !channelData[i].link.includes(".mkv")
+          !link.includes(".mp4") &&
+          !link.includes(".mkv") &&
+          !link.includes(".avi") &&
+          !link.includes(".srt") &&
+          !link.includes(".mpg") &&
+          !link.includes(".webg") &&
+          !link.includes(".mp2") &&
+          !link.includes(".mpeg") &&
+          !link.includes(".mpe") &&
+          !link.includes(".ogg") &&
+          !link.includes(".m4p") &&
+          !link.includes(".m4v") &&
+          !link.includes(".wmv") &&
+          !link.includes(".mov") &&
+          !link.includes(".qt") &&
+          !link.includes(".flv") &&
+          !link.includes(".swf") &&
+          !link.includes(".avchd")
         ) {
           tv.push(channelData[i]);
-        } else if (channelData[i].title.includes("S0")) {
+        } else if (pattern.test(channelData[i].title)) {
           shows.push(channelData[i]);
         } else {
           movies.push(channelData[i]);
         }
       }
+
+      console.log("Last index of tv array:", tv.length);
+      console.log("Last index of tv array:", tv[tv.length]);
+
+      const searchString = "293456";
+      const indexOfItemWithSearchString = tv.findIndex((item) =>
+        item.link.includes(searchString)
+      );
+
+      console.log(
+        "Index of item in tv array with link including '293456':",
+        indexOfItemWithSearchString
+      );
 
       // for (let i = 0; i < movies.length; i++) {
       //   /*
@@ -80,7 +113,7 @@ export const fetchData = () => {
       // console.log("TV 1st:", tv[0]);
       // console.log("TV Length:", tv.length);
       // console.log("Shows 1st:", shows[50]);
-      console.log("Shows Length:", shows.length);
+      // console.log("Shows Length:", shows.length);
       // console.log("Movies 1st:", movies[0]);
       // console.log("Movies Length:", movies.length);
 

@@ -34,19 +34,24 @@ const App = () => {
       <Text style={styles.title}>Channels</Text>
       {channels.length > 0 ? (
         <View>
-          <FlatList
-            data={[channels[20478]]}
+          {/* <FlatList
+            data={[tv[tv.length - 1]]}
             renderItem={renderItem}
             keyExtractor={(item, index) => index.toString()}
             contentContainerStyle={styles.listContainer}
-          />
-
-          <FlatList
-            data={[movies[1]]} // Using tv array, index 1 as data source
+          /> */}
+          {/* <FlatList
+            data={[movies[movies.length - 1]]} // Using tv array, index 1 as data source
             renderItem={renderItem}
             keyExtractor={(item, index) => index.toString()}
             contentContainerStyle={styles.listContainer}
-          />
+          /> */}
+          {/* <FlatList
+            data={[showsName[showsName.length - 2]]} // Using tv array, index 1 as data source
+            renderItem={renderItem}
+            keyExtractor={(item, index) => index.toString()}
+            contentContainerStyle={styles.listContainer}
+          /> */}
         </View>
       ) : (
         <Text>Loading...</Text>
