@@ -1,4 +1,4 @@
-export const fetchMovieData = async (item) => {
+export const fetchMovieData = async (item, movieID) => {
   const API_ENDPOINT = `https://api.themoviedb.org/3/movie/${movieID}?&api_key=d159eaf1a8e9ef27976592ad48ed5a2a`;
 
   try {
