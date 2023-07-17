@@ -79,19 +79,6 @@ export const fetchData = () => {
         }
       }
 
-      console.log("Last index of tv array:", tv.length);
-      console.log("Last index of tv array:", tv[tv.length]);
-
-      const searchString = "293456";
-      const indexOfItemWithSearchString = tv.findIndex((item) =>
-        item.link.includes(searchString)
-      );
-
-      console.log(
-        "Index of item in tv array with link including '293456':",
-        indexOfItemWithSearchString
-      );
-
       // for (let i = 0; i < movies.length; i++) {
       //   /*
       //       temp = fetchedData
