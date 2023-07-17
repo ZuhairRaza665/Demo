@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, FlatList, StyleSheet } from "react-native";
-import { fetchData, tv, movies, showsName } from "./api";
+import { fetchData, tv, movies, shows } from "./api";
 
 const App = () => {
   const [channels, setChannels] = useState([]);
@@ -34,24 +34,24 @@ const App = () => {
       <Text style={styles.title}>Channels</Text>
       {channels.length > 0 ? (
         <View>
-          {/* <FlatList
+          <FlatList
             data={[tv[tv.length - 1]]}
             renderItem={renderItem}
             keyExtractor={(item, index) => index.toString()}
             contentContainerStyle={styles.listContainer}
-          /> */}
-          {/* <FlatList
+          />
+          <FlatList
             data={[movies[movies.length - 1]]} // Using tv array, index 1 as data source
             renderItem={renderItem}
             keyExtractor={(item, index) => index.toString()}
             contentContainerStyle={styles.listContainer}
-          /> */}
-          {/* <FlatList
-            data={[showsName[showsName.length - 2]]} // Using tv array, index 1 as data source
+          />
+          <FlatList
+            data={[shows[shows.length - 2]]} // Using tv array, index 1 as data source
             renderItem={renderItem}
             keyExtractor={(item, index) => index.toString()}
             contentContainerStyle={styles.listContainer}
-          /> */}
+          />
         </View>
       ) : (
         <Text>Loading...</Text>
