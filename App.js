@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, FlatList, StyleSheet } from "react-native";
+import { View, Text, Image, StyleSheet } from "react-native";
 import { fetchData, tv, movies, shows, showsName } from "./api";
 import { fetchMovieData } from "./MovieDetailsRequest";
 
@@ -14,15 +14,11 @@ const App = () => {
     };
     getData();
 
-    console.log("App js showsName length: ", showsName.length);
-
-    fetchMovieData(movies[1]);
-    console.log("overview: ", item.poster_path);
-
-    // console.log("tv: ", tv[0]);
-    // console.log("movie: ", movies[0]);
-    // console.log("showsName: ", showsName[10]);
-  }, []);
+    if (movies[0] != null) {
+      console.log("New Updated  : ", movies[22]);
+      fetchMovieData(movies[22]);
+    }
+  }, [fetchMovieData()]);
 
   const renderItem = ({ item }) => (
     <View style={styles.itemContainer}>
@@ -54,11 +50,19 @@ const App = () => {
             keyExtractor={(item, index) => index.toString()}
             contentContainerStyle={styles.listContainer}
           /> */}
-          <FlatList
+          {/* <FlatList
             data={movies} // Using tv array, index 1 as data source
             renderItem={renderItem}
             keyExtractor={(item, index) => index.toString()}
             contentContainerStyle={styles.listContainer}
+          />
+           */}
+          <Text>{movies[22].overview}</Text>
+          <Image
+            source={{
+              uri: "https://image.tmdb.org/t/p/w500//" + movies[22].poster_path,
+            }}
+            style={styles.image}
           />
         </View>
       ) : (
@@ -74,6 +78,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     padding: 16,
+  },
+  image: {
+    width: 50,
+    height: 50,
   },
   title: {
     fontSize: 20,
