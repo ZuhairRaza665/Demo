@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, FlatList, StyleSheet } from "react-native";
-import { fetchData, tv, movies, shows } from "./api";
+import { fetchData, tv, movies, shows, showsName } from "./api";
+import { fetchMovieData } from "./MovieDetailsRequest";
 
 const App = () => {
   const [channels, setChannels] = useState([]);
@@ -13,10 +14,11 @@ const App = () => {
     };
     getData();
 
-    for (let i = 0; i < movies.length; i++) {
-      const originalString = movies[i].title;
-      const modifiedString = originalString.replace(/ /g, "%20");
-    }
+    console.log("App js showsName length: ", showsName.length);
+
+    fetchMovieData(movies[1]);
+    console.log("overview: ", item.poster_path);
+
     // console.log("tv: ", tv[0]);
     // console.log("movie: ", movies[0]);
     // console.log("showsName: ", showsName[10]);
@@ -34,7 +36,7 @@ const App = () => {
       <Text style={styles.title}>Channels</Text>
       {channels.length > 0 ? (
         <View>
-          <FlatList
+          {/* <FlatList
             data={[tv[tv.length - 1]]}
             renderItem={renderItem}
             keyExtractor={(item, index) => index.toString()}
@@ -48,6 +50,12 @@ const App = () => {
           />
           <FlatList
             data={[shows[shows.length - 2]]} // Using tv array, index 1 as data source
+            renderItem={renderItem}
+            keyExtractor={(item, index) => index.toString()}
+            contentContainerStyle={styles.listContainer}
+          /> */}
+          <FlatList
+            data={movies} // Using tv array, index 1 as data source
             renderItem={renderItem}
             keyExtractor={(item, index) => index.toString()}
             contentContainerStyle={styles.listContainer}

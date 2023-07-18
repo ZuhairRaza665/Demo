@@ -113,35 +113,28 @@ export const fetchData = () => {
       // console.log("Movies 1st:", movies[0]);
       // console.log("Movies Length:", movies.length);
 
-      for (let i = 0; i < 13000; i++) {
+      const addedTitles = new Set();
+
+      for (let i = 0; i < shows.length; i++) {
         const nam = shows[i].title;
-        const index2 = nam.indexOf("S0");
-        const substring2 = nam.substring(0, index2 - 1);
+        const titleWithoutSeason = nam.replace(/\s?[sS]\d+.*$|\s?[sS]\d+$/, "");
 
-        if (!showsName.includes(substring2)) {
-          const title = substring2;
-          const overview = null;
-          const poster = null;
-          const vote_average = null;
-          const vote_count = null;
-          const year = null;
-
+        if (!addedTitles.has(titleWithoutSeason)) {
+          addedTitles.add(titleWithoutSeason);
           showsName.push({
-            title,
-            overview,
-            poster,
-            vote_average,
-            vote_count,
-            year,
+            title: titleWithoutSeason,
+            background: null,
           });
         }
       }
 
-      console.log("Shows Name: ", showsName.length);
-      console.log("Shows Name: ", showsName[0]);
+      // console.log("Shows Name: ", showsName.length);
+      // console.log("Shows Name: ", showsName[0]);
 
-      console.log("Data: ", channelData.length);
-      console.log("total: ", tv.length + movies.length + shows.length);
+      // console.log("Data: ", channelData.length);
+      // console.log("total: ", tv.length + movies.length + shows.length);
+
+      for (let i = 0; i < movies.length; i++) {}
 
       return channelData;
     })
