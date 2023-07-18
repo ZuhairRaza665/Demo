@@ -15,10 +15,29 @@ const App = () => {
     getData();
 
     if (movies[0] != null) {
-      console.log("New Updated  : ", movies[22]);
-      fetchMovieData(movies[22]);
+      console.log("New Updated  : ", movies[21172]);
+
+      fetchMovieData(movies[21172]);
+
+      console.log("New Updated  2: ", movies[12]);
+
+      fetchMovieData(movies[12]);
     }
   }, [fetchMovieData()]);
+
+  // let targetMovieIndex = -1;
+
+  // // Use the map method to iterate through the array
+  // movies.map((movie, index) => {
+  //   // Check if the current movie's title matches the target title
+  //   if (movie.title === "Nusrat Fateh Ali Khan Live At Birmingham Town Hall - 1993") {
+  //     // Save the index of the movie in the variable
+  //     targetMovieIndex = index;
+  //   }
+  // });
+
+  // // The variable targetMovieIndex will now hold the index of the movie
+  // console.log("Index of the target movie:", targetMovieIndex);
 
   const renderItem = ({ item }) => (
     <View style={styles.itemContainer}>
@@ -57,13 +76,14 @@ const App = () => {
             contentContainerStyle={styles.listContainer}
           />
            */}
-          <Text>{movies[22].overview}</Text>
+          <Text>{movies[12].overview}</Text>
+          {/*
           <Image
             source={{
-              uri: "https://image.tmdb.org/t/p/w500//" + movies[22].poster_path,
+              uri: "https://image.tmdb.org/t/p/w500//" + movies[0].poster_path,
             }}
             style={styles.image}
-          />
+          /> */}
         </View>
       ) : (
         <Text>Loading...</Text>
@@ -80,8 +100,8 @@ const styles = StyleSheet.create({
     padding: 16,
   },
   image: {
-    width: 50,
-    height: 50,
+    height: 400,
+    resizeMode: "contain",
   },
   title: {
     fontSize: 20,

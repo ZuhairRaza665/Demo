@@ -18,10 +18,10 @@ export const fetchMovieData = async (item) => {
       year = fullTitle.substring(index + 3, index + 7);
     }
 
-    console.log("index: ", index);
-    console.log("full: ", fullTitle);
-    console.log("name: ", nam);
-    console.log("year: ", year);
+    // console.log("index: ", index);
+    // console.log("full: ", fullTitle);
+    // console.log("name: ", nam);
+    // console.log("year: ", year);
   }
 
   if (nam != null) {
@@ -37,21 +37,19 @@ export const fetchMovieData = async (item) => {
       const movieData = data.results[0]; // Assuming there's only one result in the response
       const movieId = movieData.id || null;
 
-      console.log("movie id: ", movieId);
+      // console.log("movie id: ", movieId);
 
       if (movieId) {
         await fetchMovieDetails(item, movieId);
 
-        console.log("poster path : ", item.poster_path);
-        console.log("backdrop path : ", item.backdrop_path);
+        // console.log("poster path : ", item.poster_path);
+        // console.log("backdrop path : ", item.backdrop_path);
 
         // return item;
       } else {
         console.error("Movie not found");
       }
-    } catch (error) {
-      console.error("Error fetching movie data:", error);
-    }
+    } catch (error) {}
   }
 };
 
